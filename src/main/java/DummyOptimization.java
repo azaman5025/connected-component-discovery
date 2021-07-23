@@ -14,9 +14,9 @@ import java.time.Instant;
 import java.util.*;
 
 public class DummyOptimization {
-    private static int MAX_VERTEX_COUNT_RELATED_WORK = 2;
-    private static Iterator<Map.Entry<String, JsonNode>> outerIter;
-    Graph<String, DefaultEdge> stringGraph;
+    private static int MAX_VERTEX_COUNT_RELATED_WORK = 500;
+    private static Iterator<Map.Entry<String, JsonNode>> outerIter = null;
+    Graph<String, DefaultEdge> stringGraph = null;
     int numberOfIteration = 0;
     DummyOptimization() throws IOException{
         try {
@@ -30,6 +30,7 @@ public class DummyOptimization {
         dummyOptimization(stringGraph);
         Instant end = Instant.now();
         System.out.println(end);
+
         System.out.println(Duration.between(start, end));
     }
 
@@ -103,7 +104,7 @@ public class DummyOptimization {
         Graph<String, DefaultEdge> g = new SimpleGraph<>(DefaultEdge.class);
         ObjectMapper mapper = new ObjectMapper();
         InfoGraph infoGraph = new InfoGraph();
-        infoGraph = mapper.readValue(new File("politics_smaller_version.json"), InfoGraph.class);
+        infoGraph = mapper.readValue(new File("politics.json"), InfoGraph.class);
         ObjectNode outerObjectNode = (ObjectNode) infoGraph.getAdjacencyList() ;
         outerIter = outerObjectNode.fields();
         while (outerIter.hasNext()) {
