@@ -11,9 +11,6 @@ import java.util.Map;
 
 
 public class Main {
-    private static final String Availability = "availability";
-    private static  final String key_48 = "48";
-    //private static Iterator<Map.Entry<String, JsonNode>> outerIter;
 
     public static void main(String[] args) throws IOException {
 
